@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Center Management System | Sign In</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+
+<div class="page">
+
+    <!-- Left brand panel -->
+    <aside class="brand-panel">
+        <div class="brand-content">
+            <div class="brand-mark">
+          <span class="cross-icon" aria-hidden="true">
+            <span></span><span></span>
+          </span>
+                <span class="brand-name">MedCenter</span>
+            </div>
+
+            <h1 class="brand-title">Every patient record,<br>one steady pulse.</h1>
+            <p class="brand-sub">Appointments, prescriptions, payments and patient histories &mdash; kept in sync, kept in order.</p>
+
+            <!-- Signature element: animated vitals line -->
+            <div class="vitals" aria-hidden="true">
+                <svg viewBox="0 0 400 80" preserveAspectRatio="none">
+                    <path class="vitals-line" d="M0,40 L70,40 L90,10 L110,70 L130,20 L150,40 L400,40" />
+                </svg>
+            </div>
+
+            <ul class="brand-points">
+                <li>Doctors &amp; appointment scheduling</li>
+                <li>Patients &amp; medical history</li>
+                <li>Pharmacy, suppliers &amp; billing</li>
+            </ul>
+        </div>
+
+        <p class="brand-footer">&copy; 2024 Medical Center Management System</p>
+    </aside>
+
+    <!-- Right form panel -->
+    <main class="form-panel">
+        <div class="form-card">
+
+            <div class="form-header">
+                <h2>Welcome back</h2>
+                <p>Sign in to continue to your dashboard</p>
+            </div>
+
+            <div id="errorLabel" class="error-label" role="alert" hidden>
+                Invalid username or password.
+            </div>
+
+            <form id="loginForm" novalidate>
+
+                <div class="field">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" placeholder="Enter your username" autocomplete="username" required>
+                </div>
+
+                <div class="field">
+                    <label for="password">Password</label>
+                    <div class="password-wrap">
+                        <input type="password" id="password" name="password" placeholder="Enter your password" autocomplete="current-password" required>
+                        <button type="button" id="togglePassword" class="toggle-password" aria-label="Show password" aria-pressed="false">
+                            <svg class="icon-eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+                            <svg class="icon-eye-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" hidden><path d="M17.94 17.94A10.94 10.94 0 0 1 12 19c-7 0-11-7-11-7a19.4 19.4 0 0 1 4.22-5.36M9.9 4.24A9.6 9.6 0 0 1 12 5c7 0 11 7 11 7a19.5 19.5 0 0 1-2.36 3.32M14.12 14.12a3 3 0 1 1-4.24-4.24"/><path d="M1 1l22 22"/></svg>
+                        </button>
+                    </div>
+                </div>
+
+                <label class="remember">
+                    <input type="checkbox" id="showPasswordCheck">
+                    <span>Show password</span>
+                </label>
+
+                <button type="submit" class="btn-primary" id="loginBtn">
+                    <span class="btn-label">Login</span>
+                    <span class="btn-spinner" hidden></span>
+                </button>
+
+                <button type="reset" class="btn-secondary" id="resetBtn">Clear</button>
+
+            </form>
+
+            <p class="form-footnote">Trouble signing in? Contact your system administrator.</p>
+        </div>
+    </main>
+
+</div>
+
+<script src="js/script.js"></script>
+</body>
+</html>
