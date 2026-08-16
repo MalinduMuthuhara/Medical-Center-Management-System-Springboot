@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 
 public class MedicalHistoryDTO {
 
-    private int hospitalId;
+    private int historyId;
     private int patientId;
     private String details;
 
