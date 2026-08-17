@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+
+  <!-- External CSS -->
+  <link rel="stylesheet" href="css/dashboard.css">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <style>
+    app-sidebar {
+      display: contents;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="dashboard">
+
+  <!-- ================= SIDEBAR ================= -->
+  <app-sidebar active="dashboard"></app-sidebar>
+
+  <!-- ================= MAIN CONTENT ================= -->
+  <main class="main-content">
+
+    <!-- ================= HEADER ================= -->
+    <header class="topbar">
+
+      <div>
+        <h1>Dashboard</h1>
+        <p>Welcome back! Here's an overview of your healthcare system.</p>
+      </div>
+
+      <div class="profile">
+
+        <div class="profile-icon">
+          <i class="fa-solid fa-user"></i>
+        </div>
+
+        <div>
+          <strong>Admin</strong>
+          <small>Administrator</small>
+        </div>
+
+      </div>
+
+    </header>
+
+
+    <!-- ================= STATISTICS ================= -->
+    <section class="stats">
+
+      <!-- Total Doctors -->
+      <div class="stat-card">
+
+        <div class="stat-icon">
+          <i class="fa-solid fa-user-doctor"></i>
+        </div>
+
+        <div>
+          <span>Total Doctors</span>
+          <h2 id="totalDoctors">0</h2>
+          <small>Registered doctors</small>
+        </div>
+
+      </div>
+
+
+      <!-- Total Patients -->
+      <div class="stat-card">
+
+        <div class="stat-icon">
+          <i class="fa-solid fa-hospital-user"></i>
+        </div>
+
+        <div>
+          <span>Total Patients</span>
+          <h2 id="totalPatients">0</h2>
+          <small>Registered patients</small>
+        </div>
+
+      </div>
+
+
+      <!-- Total Appointments -->
+      <div class="stat-card">
+
+        <div class="stat-icon">
+          <i class="fa-solid fa-calendar-check"></i>
+        </div>
+
+        <div>
+          <span>Total Appointments</span>
+          <h2 id="totalAppointments">0</h2>
+          <small>Scheduled appointments</small>
+        </div>
+
+      </div>
+
+
+      <!-- Total Revenue -->
+      <div class="stat-card">
+
+        <div class="stat-icon">
+          <i class="fa-solid fa-money-bill-wave"></i>
+        </div>
+
+        <div>
+          <span>Total Revenue</span>
+          <h2 id="totalRevenue">Rs. 0.00</h2>
+          <small>Total service revenue</small>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================= DASHBOARD CONTENT ================= -->
+    <section class="content-grid">
+
+
+      <!-- ================= RECENT APPOINTMENTS ================= -->
+      <div class="card">
+
+        <div class="card-header">
+
+          <h2>Recent Appointments</h2>
+
+          <a href="appointments.html">
+            View All
+          </a>
+
+        </div>
+
+
+        <div class="table-container">
+
+          <table>
+
+            <thead>
+
+            <tr>
+              <th>Appointment ID</th>
+              <th>Patient</th>
+              <th>Doctor</th>
+              <th>Date</th>
+              <th>Status</th>
+            </tr>
+
+            </thead>
+
+
+            <tbody id="recentAppointmentsTableBody">
+
+            <tr>
+
+              <td colspan="5" style="text-align: center;">
+                No recent appointments
+              </td>
+
+            </tr>
+
+            </tbody>
+
+          </table>
+
+        </div>
+
+      </div>
+
+
+      <!-- ================= QUICK ACTIONS ================= -->
+      <div class="card">
+
+        <div class="card-header">
+          <h2>Quick Actions</h2>
+        </div>
+
+
+        <!-- Add Doctor -->
+        <a href="doctor.html" class="action">
+
+          <i class="fa-solid fa-user-doctor"></i>
+
+          <div>
+            <strong>Add Doctor</strong>
+            <small>Register a new doctor</small>
+          </div>
+
+          <i class="fa-solid fa-chevron-right arrow"></i>
+
+        </a>
+
+
+        <!-- Add Patient -->
+        <a href="patient.html" class="action">
+
+          <i class="fa-solid fa-hospital-user"></i>
+
+          <div>
+            <strong>Add Patient</strong>
+            <small>Register a new patient</small>
+          </div>
+
+          <i class="fa-solid fa-chevron-right arrow"></i>
+
+        </a>
+
+
+        <!-- Create Appointment -->
+        <a href="appointments.html" class="action">
+
+          <i class="fa-solid fa-calendar-plus"></i>
+
+          <div>
+            <strong>Create Appointment</strong>
+            <small>Schedule a new appointment</small>
+          </div>
+
+          <i class="fa-solid fa-chevron-right arrow"></i>
+
+        </a>
+
+
+        <!-- View Reports -->
+        <a href="reports.html" class="action">
+
+          <i class="fa-solid fa-chart-line"></i>
+
+          <div>
+            <strong>View Reports</strong>
+            <small>View system reports</small>
+          </div>
+
+          <i class="fa-solid fa-chevron-right arrow"></i>
+
+        </a>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================= SYSTEM INFORMATION ================= -->
+    <section class="content-grid single">
+
+      <div class="card">
+
+        <div class="card-header">
+          <h2>System Overview</h2>
+        </div>
+
+
+        <div class="table-container">
+
+          <table>
+
+            <thead>
+
+            <tr>
+              <th>Module</th>
+              <th>Description</th>
+              <th>Action</th>
+            </tr>
+
+            </thead>
+
+
+            <tbody>
+
+
+            <!-- Doctors -->
+            <tr>
+
+              <td>
+                <i class="fa-solid fa-user-doctor"></i>
+                Doctors
+              </td>
+
+              <td>
+                Manage doctor information, contact details, and specializations.
+              </td>
+
+              <td>
+                <a href="doctor.html">
+                  Manage
+                </a>
+              </td>
+
+            </tr>
+
+
+            <!-- Patients -->
+            <tr>
+
+              <td>
+                <i class="fa-solid fa-hospital-user"></i>
+                Patients
+              </td>
+
+              <td>
+                Manage patient information and medical records.
+              </td>
+
+              <td>
+                <a href="patient.html">
+                  Manage
+                </a>
+              </td>
+
+            </tr>
+
+
+            <!-- Appointments -->
+            <tr>
+
+              <td>
+                <i class="fa-solid fa-calendar-check"></i>
+                Appointments
+              </td>
+
+              <td>
+                Schedule and manage patient appointments with doctors.
+              </td>
+
+              <td>
+                <a href="appointments.html">
+                  Manage
+                </a>
+              </td>
+
+            </tr>
+
+
+            <!-- Reports -->
+            <tr>
+
+              <td>
+                <i class="fa-solid fa-chart-line"></i>
+                Reports
+              </td>
+
+              <td>
+                View system statistics and healthcare reports.
+              </td>
+
+              <td>
+                <a href="reports.html">
+                  View
+                </a>
+              </td>
+
+            </tr>
+
+
+            </tbody>
+
+          </table>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+</div>
+
+
+<!-- ================= SIDEBAR ================= -->
+<script src="js/sidebar.js"></script>
+
+
+<!-- ================= JQUERY ================= -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+
+</body>
+</html>

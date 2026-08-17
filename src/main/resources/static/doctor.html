@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctors</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/crud.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        app-sidebar {
+            display: contents;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <!-- ================= SIDEBAR ================= -->
+    <app-sidebar active="doctors"></app-sidebar>
+
+    <!-- ================= MAIN CONTENT ================= -->
+    <main class="main-content">
+
+        <!-- ================= HEADER ================= -->
+        <header class="topbar">
+            <div>
+                <h1>Doctors</h1>
+                <p>View, add, edit, and remove doctors.</p>
+            </div>
+        </header>
+
+        <!-- ================= DOCTOR FORM ================= -->
+        <section class="content-grid single">
+
+            <div class="card">
+
+                <div class="card-header">
+                    <h2 id="formTitle">Add Doctor</h2>
+                </div>
+
+                <form id="doctorForm">
+
+                    <!-- Doctor ID -->
+                    <input type="hidden" id="doctorId" value="0">
+
+                    <div class="form-row">
+
+                        <!-- Full Name -->
+                        <div class="form-group">
+                            <label for="fullName">Full Name</label>
+                            <input type="text"
+                                   id="fullName"
+                                   placeholder="Enter doctor full name"
+                                   required>
+                        </div>
+
+                        <!-- Contact Number -->
+                        <div class="form-group">
+                            <label for="contactNo">Contact Number</label>
+                            <input type="text"
+                                   id="contactNo"
+                                   placeholder="Enter contact number"
+                                   required>
+                        </div>
+
+                    </div>
+
+                    <div class="form-row">
+
+                        <!-- Specialization -->
+                        <div class="form-group">
+                            <label for="specialization">Specialization</label>
+                            <input type="text"
+                                   id="specialization"
+                                   placeholder="Enter doctor specialization"
+                                   required>
+                        </div>
+
+                    </div>
+
+                    <!-- ================= BUTTONS ================= -->
+                    <div class="form-row">
+
+                        <div class="form-actions">
+
+                            <!-- Save -->
+                            <button type="submit"
+                                    onclick="handleSave(event)"
+                                    class="btn btn-primary"
+                                    id="saveBtn">
+                                <i class="fa-solid fa-floppy-disk"></i>
+                                Save
+                            </button>
+
+                            <!-- Update -->
+                            <button type="button"
+                                    onclick="handleUpdate(event)"
+                                    class="btn btn-success"
+                                    id="updateBtn"
+                                    style="display: none;">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                                Update
+                            </button>
+
+                            <!-- Cancel -->
+                            <button type="button"
+                                    onclick="handleCancel()"
+                                    class="btn btn-dark"
+                                    id="cancelBtn"
+                                    style="display: none;">
+                                <i class="fa-solid fa-xmark"></i>
+                                Cancel
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </section>
+
+        <!-- ================= DOCTOR TABLE ================= -->
+        <section class="content-grid single">
+
+            <div class="card">
+
+                <div class="card-header">
+                    <h2>All Doctors</h2>
+                </div>
+
+                <div class="table-container">
+
+                    <table>
+
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Full Name</th>
+                            <th>Contact Number</th>
+                            <th>Specialization</th>
+                            <th>Actions</th>
+                        </tr>
+                        </thead>
+
+                        <tbody id="doctorsTableBody">
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+<!-- ================= JQUERY ================= -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+<!-- ================= SIDEBAR ================= -->
+<script src="js/sidebar.js"></script>
+
+<!-- ================= SWEETALERT2 ================= -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<!-- ================= DOCTOR ================= -->
+<script src="js/custom/doctor.js"></script>
+
+</body>
+</html>
