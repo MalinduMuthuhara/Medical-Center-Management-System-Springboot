@@ -38,6 +38,8 @@ public class DepartmentServiceImpl implements DepartmentService {
             departmentRepository.save(departmentEntity);
             log.info("Department Saved Successfully ! ");
 
+        } catch (CustomException ce) {
+            throw ce;
         } catch (Exception e) {
             log.info("Error While Saving Department " , e);
             throw new CustomException(HttpStatus.INTERNAL_SERVER_ERROR.value() , "Fail To Save Department !" + e.getMessage());
@@ -63,6 +65,8 @@ public class DepartmentServiceImpl implements DepartmentService {
             departmentRepository.save(departmentEntity);
             log.info("Department Updated Successfully !");
 
+        } catch (CustomException ce) {
+            throw ce;
         } catch (Exception e) {
             log.info("Error While Updating Department ! " , e );
             throw new CustomException(HttpStatus.INTERNAL_SERVER_ERROR.value(),"Department Update Failed " + e.getMessage() );
@@ -83,6 +87,8 @@ public class DepartmentServiceImpl implements DepartmentService {
             departmentRepository.deleteById(departmentId);
             log.info("Department Deleted Successfully !");
 
+        } catch (CustomException ce) {
+            throw ce;
         } catch (Exception e) {
             log.info("Error While Deleting Department " , e);
             throw new CustomException(HttpStatus.INTERNAL_SERVER_ERROR.value() , "Department Delete Failed " + e.getMessage());
@@ -110,36 +116,40 @@ public class DepartmentServiceImpl implements DepartmentService {
                     departmentEntity.getDepartmentLocation()
             );
 
+        } catch (CustomException ce) {
+            throw ce;
         } catch (Exception e) {
-            log.info("Error While Finding Department ");
-            throw new CustomException(HttpStatus.NOT_FOUND.value(), "Department Not Found !" + e.getMessage());
+            log.info("Error While Finding Department " , e);
+            throw new CustomException(HttpStatus.INTERNAL_SERVER_ERROR.value(), "Department Not Found !" + e.getMessage());
         }
     }
 
     @Override
     public List<DepartmentDTO> getAllDepartments() throws Exception {
 
-       log.info("Executing Method get All Departments");
+        log.info("Executing Method get All Departments");
 
-       try{
-           List<DepartmentDTO>departmentDTOS = new ArrayList<>();
-           List<DepartmentEntity> departmentList= departmentRepository.findAll();
+        try{
+            List<DepartmentDTO>departmentDTOS = new ArrayList<>();
+            List<DepartmentEntity> departmentList= departmentRepository.findAll();
 
-           for(DepartmentEntity departmentEntity : departmentList){
+            for(DepartmentEntity departmentEntity : departmentList){
 
-               departmentDTOS.add(new DepartmentDTO(
-                     departmentEntity.getDepartmentId(),
-                     departmentEntity.getDepartmentName(),
-                     departmentEntity.getDepartmentLocation()
-               ));
-           }
+                departmentDTOS.add(new DepartmentDTO(
+                        departmentEntity.getDepartmentId(),
+                        departmentEntity.getDepartmentName(),
+                        departmentEntity.getDepartmentLocation()
+                ));
+            }
 
-           return departmentDTOS;
+            return departmentDTOS;
 
-       } catch (Exception e) {
-           log.info("Error While Finding Department");
-           throw new CustomException(HttpStatus.NOT_FOUND.value(), "Can't Load Deapartment Table" + e.getMessage());
-       }
+        } catch (CustomException ce) {
+            throw ce;
+        } catch (Exception e) {
+            log.info("Error While Finding Department" , e);
+            throw new CustomException(HttpStatus.INTERNAL_SERVER_ERROR.value(), "Can't Load Department Table" + e.getMessage());
+        }
 
     }
 }

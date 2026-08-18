@@ -85,8 +85,8 @@ public class WardServiceImpl implements WardService {
         }catch (CustomException ce){
             throw ce ;
         }catch (Exception e) {
-            log.info("Error While Executing method Update Ward");
-            throw new CustomException(HttpStatus.INTERNAL_SERVER_ERROR.value(), "Ward Updated Failed !");
+            log.info("Error While Executing method Update Ward" , e);
+            throw new CustomException(HttpStatus.INTERNAL_SERVER_ERROR.value(), "Ward Updated Failed !" + e.getMessage());
         }
     }
 
@@ -106,6 +106,7 @@ public class WardServiceImpl implements WardService {
         }catch (CustomException ce){
             throw ce ;
         }catch (Exception e){
+            log.info("Error While Executing Method Delete Ward " , e);
            throw new CustomException(HttpStatus.INTERNAL_SERVER_ERROR.value() , "Ward Deleted Fail !" +e.getMessage());
         }
     }
@@ -133,6 +134,7 @@ public class WardServiceImpl implements WardService {
        }catch (CustomException ce){
            throw ce;
        }catch (Exception e) {
+           log.info("Error While Executing Method Find Ward ById" , e);
            throw new CustomException(HttpStatus.INTERNAL_SERVER_ERROR.value(), "Error While Executing Method Find By Id" + e.getMessage());
        }
     }
@@ -160,6 +162,7 @@ public class WardServiceImpl implements WardService {
         }catch (CustomException ce){
             throw ce;
         }catch (Exception e){
+            log.info("Error While Executing Method getAllWards()" , e);
             throw new CustomException(HttpStatus.INTERNAL_SERVER_ERROR.value(), "Executing Method getAllWards()" + e.getMessage());
         }
 
