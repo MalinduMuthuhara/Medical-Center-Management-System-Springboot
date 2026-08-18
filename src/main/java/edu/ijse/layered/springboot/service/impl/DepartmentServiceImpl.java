@@ -128,11 +128,9 @@ public class DepartmentServiceImpl implements DepartmentService {
            for(DepartmentEntity departmentEntity : departmentList){
 
                departmentDTOS.add(new DepartmentDTO(
-
                      departmentEntity.getDepartmentId(),
                      departmentEntity.getDepartmentName(),
                      departmentEntity.getDepartmentLocation()
-
                ));
            }
 
