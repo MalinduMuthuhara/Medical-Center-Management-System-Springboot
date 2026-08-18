@@ -20,7 +20,10 @@ public class MedicalHistoryEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int historyId;
 
-    private int patientId;
+    @ManyToOne
+    @JoinColumn(name = "patient_id")
+    private PatientEntity patientEntity;
+
     private String details;
 
 }

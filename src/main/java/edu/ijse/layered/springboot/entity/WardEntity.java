@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Setter
@@ -27,5 +29,8 @@ public class WardEntity {
     private String roomNumber;
     private String type;
     private int capacity;
+
+    @OneToMany(mappedBy = "wardEntity")
+    private List<PatientEntity>patientEntityList;
 
 }

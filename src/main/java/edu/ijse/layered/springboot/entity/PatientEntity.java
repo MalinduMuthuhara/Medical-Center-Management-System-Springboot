@@ -7,6 +7,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Setter
@@ -21,10 +23,21 @@ public class PatientEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int patientId;
 
-    private int wardId;
+    @ManyToOne
+    @JoinColumn(name = "ward_id")
+    private WardEntity wardEntity;
+
     private String patientName;
     private int patientAge;
+
+    @Enumerated(EnumType.STRING)
     private PatientGender patientGender;
+
     private String patientAddress;
 
+    @OneToMany(mappedBy = "patientEntity")
+    private List<AppointmentEntity>appointmentEntityList;
+
+    @OneToMany(mappedBy = "patientEntity")
+    private List<MedicalHistoryEntity>medicalHistoryEntityList;
 }

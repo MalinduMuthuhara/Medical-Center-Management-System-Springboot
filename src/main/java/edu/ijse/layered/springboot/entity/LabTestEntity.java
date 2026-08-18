@@ -22,7 +22,10 @@ public class LabTestEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int labTestId;
 
-    private int appointmentId;
+    @ManyToOne
+    @JoinColumn(name = "appointment_id")
+    private AppointmentEntity appointmentEntity;
+
     private String testName;
     private String result;
     private LocalDate testDate;

@@ -20,7 +20,10 @@ public class PaymentEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int paymentId;
 
-    private int appointmentId;
+    @OneToOne
+    @JoinColumn(name = "appointment_id" , unique = true)
+    private AppointmentEntity appointmentEntity;
+
     private double amount;
 
 }

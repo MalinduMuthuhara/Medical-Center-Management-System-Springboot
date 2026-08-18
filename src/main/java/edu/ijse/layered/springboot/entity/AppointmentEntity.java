@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Setter
@@ -20,7 +22,18 @@ public class AppointmentEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int appointmentId;
 
-    private int doctorId;
-    private int patientId;
+    @ManyToOne
+    @JoinColumn(name = "doctor_id")
+    private DoctorEntity doctorEntity;
+
+    @ManyToOne
+    @JoinColumn(name = "patient_id")
+    private PatientEntity patientEntity;
+
+    @OneToMany(mappedBy = "appointmentEntity")
+    private List<LabTestEntity> labTestEntityList;
+
+    @OneToOne(mappedBy = "appointmentEntity")
+    private PaymentEntity paymentEntity;
 
 }

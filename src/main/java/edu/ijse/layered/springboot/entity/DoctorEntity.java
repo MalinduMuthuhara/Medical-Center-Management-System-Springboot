@@ -3,6 +3,8 @@ package edu.ijse.layered.springboot.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Setter
@@ -24,5 +26,8 @@ public class DoctorEntity {
     private String doctorName;
     private String specialization;
     private int contactNumber;
+
+    @OneToMany(mappedBy = "doctorEntity")
+    private List<AppointmentEntity>appointmentEntityList;
 
 }

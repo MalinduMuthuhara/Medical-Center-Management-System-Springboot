@@ -1,7 +1,6 @@
-package edu.ijse.layered.springboot.entity;
+/*package edu.ijse.layered.springboot.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,13 +11,20 @@ import lombok.Setter;
 @Setter
 @Getter
 
-//@Entity
-//@Table(name = "appointment_medicine")
+@Entity
+@Table(name = "appointment_medicine")
 
 public class AppointmentMedicineEntity {
+    @Id
+    @ManyToOne
+    @JoinColumn(name = "appointment_id")
+    private AppointmentEntity appointmentEntity;
 
-    private int appointmentId;
-    private int medicineId;
+    @Id
+    @ManyToOne
+    @JoinColumn(name = "medicine_id")
+    private MedicineEntity medicineEntity;
+
     private int quantity;
 
-}
+}*/
