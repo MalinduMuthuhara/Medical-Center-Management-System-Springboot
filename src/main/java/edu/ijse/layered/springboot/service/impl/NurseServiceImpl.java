@@ -35,6 +35,7 @@ public class NurseServiceImpl implements NurseService {
             if (optionalDepartment.isEmpty()){
                 throw new CustomException(HttpStatus.NOT_FOUND.value(), "Can't Find Department");
             }
+
             NurseEntity nurseEntity = new NurseEntity();
             //nurseEntity.setNurseId(nurseDTO.getNurseId());
             nurseEntity.setDepartmentEntity(optionalDepartment.get());
