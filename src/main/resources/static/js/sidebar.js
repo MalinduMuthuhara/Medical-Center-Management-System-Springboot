@@ -14,6 +14,14 @@ class AppSidebar extends HTMLElement {
             href: "dashboard.html"
         },
 
+        // Departments
+        {
+            page: "departments",
+            icon: "fa-building",
+            label: "Departments",
+            href: "department.html"
+        },
+
         // Doctors
         {
             page: "doctors",
