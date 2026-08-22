@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expenses</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/crud.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        app-sidebar {
+            display: contents;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <!-- ================= SIDEBAR ================= -->
+    <app-sidebar active="expenses"></app-sidebar>
+
+    <!-- ================= MAIN CONTENT ================= -->
+    <main class="main-content">
+
+        <!-- ================= HEADER ================= -->
+        <header class="topbar">
+            <div>
+                <h1>Expenses</h1>
+                <p>View, add, edit, and remove department expenses.</p>
+            </div>
+        </header>
+
+        <!-- ================= EXPENSE FORM ================= -->
+        <section class="content-grid single">
+
+            <div class="card">
+
+                <div class="card-header">
+                    <h2 id="formTitle">Add Expense</h2>
+                </div>
+
+                <form id="expenseForm">
+
+                    <!-- Expense ID -->
+                    <input type="hidden" id="expenseId" value="0">
+
+                    <div class="form-row">
+
+                        <!-- Category -->
+                        <div class="form-group">
+                            <label for="category">Category</label>
+                            <input type="text"
+                                   id="category"
+                                   placeholder="Enter expense category"
+                                   required>
+                        </div>
+
+                        <!-- Department -->
+                        <div class="form-group">
+                            <label for="departmentId">Department</label>
+                            <select id="departmentId" required>
+                                <option value="">Select Department</option>
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <div class="form-row">
+
+                        <!-- Amount -->
+                        <div class="form-group">
+                            <label for="amount">Amount</label>
+                            <input type="number"
+                                   id="amount"
+                                   placeholder="Enter amount"
+                                   step="0.01"
+                                   min="0"
+                                   required>
+                        </div>
+
+                        <!-- Expense Date -->
+                        <div class="form-group">
+                            <label for="expenseDate">Expense Date</label>
+                            <input type="date"
+                                   id="expenseDate"
+                                   required>
+                        </div>
+
+                    </div>
+
+                    <div class="form-row">
+
+                        <!-- Description -->
+                        <div class="form-group">
+                            <label for="description">Description</label>
+                            <input type="text"
+                                   id="description"
+                                   placeholder="Enter expense description"
+                                   required>
+                        </div>
+
+                    </div>
+
+                    <!-- ================= BUTTONS ================= -->
+                    <div class="form-row">
+
+                        <div class="form-actions">
+
+                            <!-- Save -->
+                            <button type="submit"
+                                    onclick="handleSave(event)"
+                                    class="btn btn-primary"
+                                    id="saveBtn">
+                                <i class="fa-solid fa-floppy-disk"></i>
+                                Save
+                            </button>
+
+                            <!-- Update -->
+                            <button type="button"
+                                    onclick="handleUpdate(event)"
+                                    class="btn btn-success"
+                                    id="updateBtn"
+                                    style="display: none;">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                                Update
+                            </button>
+
+                            <!-- Delete -->
+                            <button type="button"
+                                    onclick="handleDelete(event)"
+                                    class="btn btn-danger"
+                                    id="deleteBtn"
+                                    style="display: none;">
+                                <i class="fa-solid fa-trash"></i>
+                                Delete
+                            </button>
+
+                            <!-- Cancel -->
+                            <button type="button"
+                                    onclick="handleCancel()"
+                                    class="btn btn-dark"
+                                    id="cancelBtn"
+                                    style="display: none;">
+                                <i class="fa-solid fa-xmark"></i>
+                                Cancel
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </section>
+
+        <!-- ================= EXPENSE TABLE ================= -->
+        <section class="content-grid single">
+
+            <div class="card">
+
+                <div class="card-header">
+                    <h2>All Expenses</h2>
+                </div>
+
+                <div class="table-container">
+
+                    <table>
+
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Category</th>
+                            <th>Description</th>
+                            <th>Amount</th>
+                            <th>Date</th>
+                            <th>Department</th>
+                        </tr>
+                        </thead>
+
+                        <tbody id="expensesTableBody">
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+<!-- ================= JQUERY ================= -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+<!-- ================= SIDEBAR ================= -->
+<script src="js/sidebar.js"></script>
+
+<!-- ================= SWEETALERT2 ================= -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<!-- ================= EXPENSE ================= -->
+<script src="js/custom/expense.js"></script>
+
+</body>
+</html>

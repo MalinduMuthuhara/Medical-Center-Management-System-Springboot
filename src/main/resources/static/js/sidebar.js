@@ -38,6 +38,14 @@ class AppSidebar extends HTMLElement {
             href: "nurse.html"
         },
 
+        // Expenses
+        {
+            page: "expenses",
+            icon: "fa-money-bill-wave",
+            label: "Expenses",
+            href: "expense.html"
+        },
+
         // Doctors
         {
             page: "doctors",
