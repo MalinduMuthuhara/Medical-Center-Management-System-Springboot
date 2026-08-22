@@ -25,7 +25,7 @@ public class DoctorEntity {
 
     private String doctorName;
     private String specialization;
-    private int contactNumber;
+    private String contactNumber;
 
     @OneToMany(mappedBy = "doctorEntity")
     private List<AppointmentEntity>appointmentEntityList;

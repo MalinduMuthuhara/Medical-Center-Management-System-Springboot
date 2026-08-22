@@ -14,6 +14,6 @@ public class DoctorDTO {
     private int departmentId;
     private String doctorName;
     private String specialization;
-    private int contactNumber;
+    private String contactNumber;
 
 }

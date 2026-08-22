@@ -22,6 +22,22 @@ class AppSidebar extends HTMLElement {
             href: "department.html"
         },
 
+        // Wards
+        {
+            page: "wards",
+            icon: "fa-bed-pulse",
+            label: "Wards",
+            href: "ward.html"
+        },
+
+        // Nurses
+        {
+            page: "nurses",
+            icon: "fa-user-nurse",
+            label: "Nurses",
+            href: "nurse.html"
+        },
+
         // Doctors
         {
             page: "doctors",

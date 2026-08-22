@@ -7,6 +7,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/v1/doctor")
 @AllArgsConstructor
@@ -31,5 +33,17 @@ public class DoctorController {
     public ResponseEntity<String>deleteDoctor(@PathVariable("id") Integer doctorId) throws Exception {
         doctorService.deleteDoctor(doctorId);
         return ResponseEntity.ok().body("Doctor Deleted Successfully ");
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<DoctorDTO>getDoctorById(@PathVariable("id") Integer doctorId)throws Exception{
+        DoctorDTO doctorDTO = doctorService.findDoctorById(doctorId);
+        return ResponseEntity.ok().body(doctorDTO);
+    }
+
+    @GetMapping
+    public ResponseEntity<?>getAllDoctors()throws Exception{
+        List<DoctorDTO> doctorDTOList = doctorService.getAllDoctors();
+        return ResponseEntity.ok().body(doctorDTOList);
     }
 }

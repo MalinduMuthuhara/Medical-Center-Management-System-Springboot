@@ -21,6 +21,6 @@ public class SupplierEntity {
     private int supplierId;
 
     private String supplierName;
-    private int contactNumber;
+    private String contactNumber;
 
 }

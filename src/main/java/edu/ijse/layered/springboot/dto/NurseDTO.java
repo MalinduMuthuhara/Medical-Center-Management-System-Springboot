@@ -13,6 +13,6 @@ public class NurseDTO {
     private int nurseId;
     private int departmentId;
     private String nurseName;
-    private int contactNumber;
+    private String  contactNumber;
 
 }

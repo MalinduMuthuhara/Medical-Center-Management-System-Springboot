@@ -12,6 +12,6 @@ public class SupplierDTO {
 
     private int supplierId;
     private String supplierName;
-    private int contactNumber;
+    private String contactNumber;
 
 }

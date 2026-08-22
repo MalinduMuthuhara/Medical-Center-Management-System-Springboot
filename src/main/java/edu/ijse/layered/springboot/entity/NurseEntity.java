@@ -25,6 +25,6 @@ public class NurseEntity {
     private DepartmentEntity departmentEntity;
 
     private String nurseName;
-    private int contactNumber;
+    private String contactNumber;
 
 }
