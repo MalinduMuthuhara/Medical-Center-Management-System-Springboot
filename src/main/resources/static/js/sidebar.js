@@ -67,7 +67,7 @@ class AppSidebar extends HTMLElement {
             page: "appointments",
             icon: "fa-calendar-check",
             label: "Appointments",
-            href: "appointments.html"
+            href: "appointment.html"
         },
 
         // Reports
