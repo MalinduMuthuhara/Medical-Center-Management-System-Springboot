@@ -46,6 +46,14 @@ class AppSidebar extends HTMLElement {
             href: "expense.html"
         },
 
+        // Medicines
+        {
+            page: "medicines",
+            icon: "fa-pills",
+            label: "Medicines",
+            href: "medicine.html"
+        },
+
         // Doctors
         {
             page: "doctors",
