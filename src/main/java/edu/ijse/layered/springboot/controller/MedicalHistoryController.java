@@ -30,7 +30,7 @@ public class MedicalHistoryController {
         return ResponseEntity.ok().body("Medical History Updated Successfully");
     }
 
-    @DeleteMapping("{/id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<String>deleteMedicalHistory(@PathVariable("id") Integer medicalHistoryId)throws Exception{
         medicalHistoryService.deleteMedicalHistory(medicalHistoryId);
         return ResponseEntity.ok().body("Medical History Deleted Successfully");

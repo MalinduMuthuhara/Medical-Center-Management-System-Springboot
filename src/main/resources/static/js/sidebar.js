@@ -54,6 +54,14 @@ class AppSidebar extends HTMLElement {
             href: "medicine.html"
         },
 
+        // Suppliers
+        {
+            page: "suppliers",
+            icon: "fa-truck-fast",
+            label: "Suppliers",
+            href: "supplier.html"
+        },
+
         // Doctors
         {
             page: "doctors",
@@ -76,6 +84,14 @@ class AppSidebar extends HTMLElement {
             icon: "fa-calendar-check",
             label: "Appointments",
             href: "appointment.html"
+        },
+
+        // Medical History
+        {
+            page: "medicalhistory",
+            icon: "fa-notes-medical",
+            label: "Medical History",
+            href: "medicalhistory.html"
         },
 
         // Reports

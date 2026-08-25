@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical History</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/crud.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        app-sidebar {
+            display: contents;
+        }
+
+        .form-group textarea {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #d6d9df;
+            border-radius: 7px;
+            outline: none;
+            font-size: 14px;
+            font-family: inherit;
+            background: #fff;
+            resize: vertical;
+            transition: 0.2s ease;
+        }
+
+        .form-group textarea:focus {
+            border-color: #4f46e5;
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <!-- ================= SIDEBAR ================= -->
+    <app-sidebar active="medicalhistory"></app-sidebar>
+
+    <!-- ================= MAIN CONTENT ================= -->
+    <main class="main-content">
+
+        <!-- ================= HEADER ================= -->
+        <header class="topbar">
+            <div>
+                <h1>Medical History</h1>
+                <p>View, add, edit, and remove patient medical histories.</p>
+            </div>
+        </header>
+
+        <!-- ================= MEDICAL HISTORY FORM ================= -->
+        <section class="content-grid single">
+
+            <div class="card">
+
+                <div class="card-header">
+                    <h2 id="formTitle">Add Medical History</h2>
+                </div>
+
+                <form id="medicalHistoryForm">
+
+                    <!-- Medical History ID -->
+                    <input type="hidden" id="historyId" value="0">
+
+                    <div class="form-row">
+
+                        <!-- Patient -->
+                        <div class="form-group">
+                            <label for="patientId">Patient</label>
+                            <select id="patientId" required>
+                                <option value="">Select Patient</option>
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <div class="form-row">
+
+                        <!-- Details -->
+                        <div class="form-group">
+                            <label for="details">Details</label>
+                            <textarea id="details"
+                                      rows="4"
+                                      placeholder="Enter medical history details"
+                                      required></textarea>
+                        </div>
+
+                    </div>
+
+                    <!-- ================= BUTTONS ================= -->
+                    <div class="form-row">
+
+                        <div class="form-actions">
+
+                            <!-- Save -->
+                            <button type="submit"
+                                    onclick="handleSave(event)"
+                                    class="btn btn-primary"
+                                    id="saveBtn">
+                                <i class="fa-solid fa-floppy-disk"></i>
+                                Save
+                            </button>
+
+                            <!-- Update -->
+                            <button type="button"
+                                    onclick="handleUpdate(event)"
+                                    class="btn btn-success"
+                                    id="updateBtn"
+                                    style="display: none;">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                                Update
+                            </button>
+
+                            <!-- Delete -->
+                            <button type="button"
+                                    onclick="handleDelete(event)"
+                                    class="btn btn-danger"
+                                    id="deleteBtn"
+                                    style="display: none;">
+                                <i class="fa-solid fa-trash"></i>
+                                Delete
+                            </button>
+
+                            <!-- Cancel -->
+                            <button type="button"
+                                    onclick="handleCancel()"
+                                    class="btn btn-dark"
+                                    id="cancelBtn"
+                                    style="display: none;">
+                                <i class="fa-solid fa-xmark"></i>
+                                Cancel
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </section>
+
+        <!-- ================= MEDICAL HISTORY TABLE ================= -->
+        <section class="content-grid single">
+
+            <div class="card">
+
+                <div class="card-header">
+                    <h2>All Medical Histories</h2>
+                </div>
+
+                <div class="table-container">
+
+                    <table>
+
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Patient</th>
+                            <th>Details</th>
+                        </tr>
+                        </thead>
+
+                        <tbody id="medicalHistoryTableBody">
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+<!-- ================= JQUERY ================= -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+<!-- ================= SIDEBAR ================= -->
+<script src="js/sidebar.js"></script>
+
+<!-- ================= SWEETALERT2 ================= -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<!-- ================= MEDICAL HISTORY ================= -->
+<script src="js/custom/medicalhistory.js"></script>
+
+</body>
+</html>
