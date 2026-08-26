@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Setter
@@ -22,5 +24,8 @@ public class SupplierEntity {
 
     private String supplierName;
     private String contactNumber;
+
+    @OneToMany(mappedBy = "supplier" , cascade = CascadeType.ALL)
+    List<MedicineSupplierEntity> medicineSupplierEntities;
 
 }

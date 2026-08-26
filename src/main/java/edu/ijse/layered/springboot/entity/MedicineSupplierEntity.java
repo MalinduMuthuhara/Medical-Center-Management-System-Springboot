@@ -1,30 +1,32 @@
-/*package edu.ijse.layered.springboot.entity;
+package edu.ijse.layered.springboot.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
-@AllArgsConstructor
-@NoArgsConstructor
-@Setter
-@Getter
 @Entity
-@Table(name = "medicine_supplier")
+@Table(
+        name = "medicine_supplier",
+        uniqueConstraints = {
+                @UniqueConstraint(
+                        columnNames = {"medicine_id", "supplier_id"}
+                )
+        }
+)
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class MedicineSupplierEntity {
 
-    @EmbeddedId
-    private MedicineSupplierId id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long medicineSupplierId;
 
-    @ManyToOne
-    @MapsId("medicineId")
-    @JoinColumn(name = "medicine_id")
-    private MedicineEntity medicineEntity;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "medicine_id", nullable = false)
+    private MedicineEntity medicine;
 
-    @ManyToOne
-    @MapsId("supplierId")
-    @JoinColumn(name = "supplier_id")
-    private SupplierEntity supplierEntity;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "supplier_id", nullable = false)
+    private SupplierEntity supplier;
 
-}*/
+}

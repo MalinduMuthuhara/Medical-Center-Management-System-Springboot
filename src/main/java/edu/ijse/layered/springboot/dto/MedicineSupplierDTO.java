@@ -1,16 +1,14 @@
 package edu.ijse.layered.springboot.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-@AllArgsConstructor
-@NoArgsConstructor
 @Data
-
+@NoArgsConstructor
+@AllArgsConstructor
 public class MedicineSupplierDTO {
 
-    private int medicineId;
-    private int supplierId;
+    private Long medicineSupplierId;
+    private Long medicineId;
+    private Long supplierId;
 
 }

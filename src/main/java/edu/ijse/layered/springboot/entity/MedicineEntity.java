@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -26,5 +27,8 @@ public class MedicineEntity {
     private LocalDate expireDate;
     private int medicineQuantity;
     private double price;
+
+    @OneToMany(mappedBy = "medicine", cascade = CascadeType.ALL)
+    private List<MedicineSupplierEntity> medicineSupplierEntities;
 
 }
