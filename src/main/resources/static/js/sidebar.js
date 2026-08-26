@@ -94,6 +94,14 @@ class AppSidebar extends HTMLElement {
             href: "medicalhistory.html"
         },
 
+        // Lab Tests
+        {
+            page: "labtests",
+            icon: "fa-vial",
+            label: "Lab Tests",
+            href: "labtest.html"
+        },
+
         // Reports
         {
             page: "reports",
