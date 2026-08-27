@@ -94,6 +94,14 @@ class AppSidebar extends HTMLElement {
             href: "appointment.html"
         },
 
+        // Appointment Medicines
+        {
+            page: "appointmentmedicines",
+            icon: "fa-prescription-bottle-medical",
+            label: "Appointment Medicines",
+            href: "appointmentmedicine.html"
+        },
+
         // Medical History
         {
             page: "medicalhistory",

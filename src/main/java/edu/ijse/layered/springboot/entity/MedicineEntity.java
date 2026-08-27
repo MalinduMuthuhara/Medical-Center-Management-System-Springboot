@@ -31,4 +31,7 @@ public class MedicineEntity {
     @OneToMany(mappedBy = "medicineEntity", cascade = CascadeType.ALL)
     private List<MedicineSupplierEntity> medicineSupplierEntities;
 
+    @OneToMany(mappedBy = "medicineEntity")
+    private List<AppointmentMedicineEntity>appointmentMedicineEntityList;
+
 }

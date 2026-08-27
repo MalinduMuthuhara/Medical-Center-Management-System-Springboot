@@ -36,4 +36,7 @@ public class AppointmentEntity {
     @OneToOne(mappedBy = "appointmentEntity")
     private PaymentEntity paymentEntity;
 
+    @OneToMany(mappedBy = "appointmentEntity")
+    private List<AppointmentMedicineEntity>appointmentMedicineEntityList;
+
 }

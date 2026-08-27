@@ -10,8 +10,10 @@ import lombok.NoArgsConstructor;
 
 public class AppointmentMedicineDTO {
 
+    private int appointmentMedicineId;
     private int appointmentId;
     private int medicineId;
+    private String medicineName;
     private int quantity;
 
 }
