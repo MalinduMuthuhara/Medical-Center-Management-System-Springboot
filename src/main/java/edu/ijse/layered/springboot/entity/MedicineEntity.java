@@ -28,7 +28,7 @@ public class MedicineEntity {
     private int medicineQuantity;
     private double price;
 
-    @OneToMany(mappedBy = "medicine", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "medicineEntity", cascade = CascadeType.ALL)
     private List<MedicineSupplierEntity> medicineSupplierEntities;
 
 }

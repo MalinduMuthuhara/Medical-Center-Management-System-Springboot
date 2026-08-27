@@ -25,7 +25,7 @@ public class SupplierEntity {
     private String supplierName;
     private String contactNumber;
 
-    @OneToMany(mappedBy = "supplier" , cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "supplierEntity" , cascade = CascadeType.ALL)
     List<MedicineSupplierEntity> medicineSupplierEntities;
 
 }

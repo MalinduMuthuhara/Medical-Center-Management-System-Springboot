@@ -19,14 +19,14 @@ public class MedicineSupplierEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long medicineSupplierId;
+    private int medicineSupplierId;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "medicine_id", nullable = false)
-    private MedicineEntity medicine;
+    private MedicineEntity medicineEntity;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "supplier_id", nullable = false)
-    private SupplierEntity supplier;
+    private SupplierEntity supplierEntity;
 
 }

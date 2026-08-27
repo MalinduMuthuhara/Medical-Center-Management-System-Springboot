@@ -62,6 +62,14 @@ class AppSidebar extends HTMLElement {
             href: "supplier.html"
         },
 
+        // Medicine Suppliers
+        {
+            page: "medicinesuppliers",
+            icon: "fa-boxes-packing",
+            label: "Medicine Suppliers",
+            href: "medicinesupplier.html"
+        },
+
         // Doctors
         {
             page: "doctors",
