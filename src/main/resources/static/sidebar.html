@@ -184,7 +184,7 @@
 
 
         <!-- Add Department -->
-        <a href="department.html" class="action">
+        <a href="department-ward.html" class="action">
 
           <i class="fa-solid fa-building"></i>
 
@@ -199,7 +199,7 @@
 
 
         <!-- Add Doctor -->
-        <a href="doctor.html" class="action">
+        <a href="doctor-nurse.html" class="action">
 
           <i class="fa-solid fa-user-doctor"></i>
 
@@ -211,37 +211,6 @@
           <i class="fa-solid fa-chevron-right arrow"></i>
 
         </a>
-
-
-        <!-- Add Patient -->
-        <a href="patient.html" class="action">
-
-          <i class="fa-solid fa-hospital-user"></i>
-
-          <div>
-            <strong>Add Patient</strong>
-            <small>Register a new patient</small>
-          </div>
-
-          <i class="fa-solid fa-chevron-right arrow"></i>
-
-        </a>
-
-
-        <!-- Create Appointment -->
-        <a href="appointments.html" class="action">
-
-          <i class="fa-solid fa-calendar-plus"></i>
-
-          <div>
-            <strong>Create Appointment</strong>
-            <small>Schedule a new appointment</small>
-          </div>
-
-          <i class="fa-solid fa-chevron-right arrow"></i>
-
-        </a>
-
 
         <!-- View Reports -->
         <a href="reports.html" class="action">
@@ -303,13 +272,12 @@
               </td>
 
               <td>
-                <a href="department.html">
+                <a href="department-ward.html">
                   Manage
                 </a>
               </td>
 
             </tr>
-
 
             <!-- Doctors -->
             <tr>
@@ -324,55 +292,12 @@
               </td>
 
               <td>
-                <a href="doctor.html">
+                <a href="doctor-nurse.html">
                   Manage
                 </a>
               </td>
 
             </tr>
-
-
-            <!-- Patients -->
-            <tr>
-
-              <td>
-                <i class="fa-solid fa-hospital-user"></i>
-                Patients
-              </td>
-
-              <td>
-                Manage patient information and medical records.
-              </td>
-
-              <td>
-                <a href="patient.html">
-                  Manage
-                </a>
-              </td>
-
-            </tr>
-
-
-            <!-- Appointments -->
-            <tr>
-
-              <td>
-                <i class="fa-solid fa-calendar-check"></i>
-                Appointments
-              </td>
-
-              <td>
-                Schedule and manage patient appointments with doctors.
-              </td>
-
-              <td>
-                <a href="appointments.html">
-                  Manage
-                </a>
-              </td>
-
-            </tr>
-
 
             <!-- Reports -->
             <tr>
@@ -410,12 +335,16 @@
 </div>
 
 
+<!-- ================= JQUERY (must load before any script that uses $) ================= -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+
 <!-- ================= SIDEBAR ================= -->
 <script src="js/sidebar.js"></script>
 
 
-<!-- ================= JQUERY ================= -->
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<!-- ================= DASHBOARD DATA ================= -->
+<script src="js/dashboard.js"></script>
 
 
 </body>

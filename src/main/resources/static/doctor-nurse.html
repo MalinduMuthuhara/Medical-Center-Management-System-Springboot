@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctors & Nurses</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/crud.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        app-sidebar {
+            display: contents;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <!-- ================= SIDEBAR ================= -->
+    <app-sidebar active="doctors"></app-sidebar>
+
+    <!-- ================= MAIN CONTENT ================= -->
+    <main class="main-content">
+
+        <!-- ================= HEADER ================= -->
+        <header class="topbar">
+            <div>
+                <h1>Doctors & Nurses</h1>
+                <p>View, add, edit, and remove doctors and nurses.</p>
+            </div>
+        </header>
+
+        <!-- ================= TABS ================= -->
+        <div class="section-tabs">
+            <button type="button" class="section-tab active" id="tabBtnDoctor" onclick="switchTab('doctor')">
+                <i class="fa-solid fa-user-doctor"></i>
+                Doctors
+            </button>
+            <button type="button" class="section-tab" id="tabBtnNurse" onclick="switchTab('nurse')">
+                <i class="fa-solid fa-user-nurse"></i>
+                Nurses
+            </button>
+        </div>
+
+        <!-- ============================================================= -->
+        <!-- ================= DOCTOR TAB PANEL ============================ -->
+        <!-- ============================================================= -->
+        <div class="tab-panel active" id="panelDoctor">
+
+            <!-- ================= DOCTOR FORM ================= -->
+            <section class="content-grid single">
+
+                <div class="card">
+
+                    <div class="card-header">
+                        <h2 id="doctorFormTitle">Add Doctor</h2>
+                    </div>
+
+                    <form id="doctorForm">
+
+                        <!-- Doctor ID -->
+                        <input type="hidden" id="doctorId" value="0">
+
+                        <div class="form-row">
+
+                            <!-- Full Name -->
+                            <div class="form-group">
+                                <label for="doctorFullName">Full Name</label>
+                                <input type="text"
+                                       id="doctorFullName"
+                                       placeholder="Enter doctor full name"
+                                       required>
+                            </div>
+
+                            <!-- Contact Number -->
+                            <div class="form-group">
+                                <label for="doctorContactNo">Contact Number</label>
+                                <input type="text"
+                                       id="doctorContactNo"
+                                       placeholder="Enter contact number"
+                                       required>
+                            </div>
+
+                        </div>
+
+                        <div class="form-row">
+
+                            <!-- Specialization -->
+                            <div class="form-group">
+                                <label for="specialization">Specialization</label>
+                                <input type="text"
+                                       id="specialization"
+                                       placeholder="Enter doctor specialization"
+                                       required>
+                            </div>
+
+                            <!-- Department -->
+                            <div class="form-group">
+                                <label for="doctorDepartmentId">Department</label>
+                                <select id="doctorDepartmentId" required>
+                                    <option value="">Select Department</option>
+                                </select>
+                            </div>
+
+                        </div>
+
+                        <!-- ================= BUTTONS ================= -->
+                        <div class="form-row">
+
+                            <div class="form-actions">
+
+                                <!-- Save -->
+                                <button type="submit"
+                                        onclick="handleSaveDoctor(event)"
+                                        class="btn btn-primary"
+                                        id="doctorSaveBtn">
+                                    <i class="fa-solid fa-floppy-disk"></i>
+                                    Save
+                                </button>
+
+                                <!-- Update -->
+                                <button type="button"
+                                        onclick="handleUpdateDoctor(event)"
+                                        class="btn btn-success"
+                                        id="doctorUpdateBtn"
+                                        style="display: none;">
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                    Update
+                                </button>
+
+                                <!-- Delete -->
+                                <button type="button"
+                                        onclick="handleDeleteDoctor(event)"
+                                        class="btn btn-danger"
+                                        id="doctorDeleteBtn"
+                                        style="display: none;">
+                                    <i class="fa-solid fa-trash"></i>
+                                    Delete
+                                </button>
+
+                                <!-- Cancel -->
+                                <button type="button"
+                                        onclick="handleCancelDoctor()"
+                                        class="btn btn-dark"
+                                        id="doctorCancelBtn"
+                                        style="display: none;">
+                                    <i class="fa-solid fa-xmark"></i>
+                                    Cancel
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </section>
+
+            <!-- ================= DOCTOR TABLE ================= -->
+            <section class="content-grid single">
+
+                <div class="card">
+
+                    <div class="card-header">
+                        <h2>All Doctors</h2>
+                    </div>
+
+                    <div class="table-container">
+
+                        <table>
+
+                            <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Full Name</th>
+                                <th>Contact Number</th>
+                                <th>Specialization</th>
+                                <th>Department</th>
+                            </tr>
+                            </thead>
+
+                            <tbody id="doctorsTableBody">
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+        <!-- ============================================================= -->
+        <!-- ==================== NURSE TAB PANEL =========================== -->
+        <!-- ============================================================= -->
+        <div class="tab-panel" id="panelNurse">
+
+            <!-- ================= NURSE FORM ================= -->
+            <section class="content-grid single">
+
+                <div class="card">
+
+                    <div class="card-header">
+                        <h2 id="nurseFormTitle">Add Nurse</h2>
+                    </div>
+
+                    <form id="nurseForm">
+
+                        <!-- Nurse ID -->
+                        <input type="hidden" id="nurseId" value="0">
+
+                        <div class="form-row">
+
+                            <!-- Full Name -->
+                            <div class="form-group">
+                                <label for="nurseFullName">Full Name</label>
+                                <input type="text"
+                                       id="nurseFullName"
+                                       placeholder="Enter nurse full name"
+                                       required>
+                            </div>
+
+                            <!-- Contact Number -->
+                            <div class="form-group">
+                                <label for="nurseContactNo">Contact Number</label>
+                                <input type="text"
+                                       id="nurseContactNo"
+                                       placeholder="Enter contact number"
+                                       required>
+                            </div>
+
+                        </div>
+
+                        <div class="form-row">
+
+                            <!-- Department -->
+                            <div class="form-group">
+                                <label for="nurseDepartmentId">Department</label>
+                                <select id="nurseDepartmentId" required>
+                                    <option value="">Select Department</option>
+                                </select>
+                            </div>
+
+                        </div>
+
+                        <!-- ================= BUTTONS ================= -->
+                        <div class="form-row">
+
+                            <div class="form-actions">
+
+                                <!-- Save -->
+                                <button type="submit"
+                                        onclick="handleSaveNurse(event)"
+                                        class="btn btn-primary"
+                                        id="nurseSaveBtn">
+                                    <i class="fa-solid fa-floppy-disk"></i>
+                                    Save
+                                </button>
+
+                                <!-- Update -->
+                                <button type="button"
+                                        onclick="handleUpdateNurse(event)"
+                                        class="btn btn-success"
+                                        id="nurseUpdateBtn"
+                                        style="display: none;">
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                    Update
+                                </button>
+
+                                <!-- Delete -->
+                                <button type="button"
+                                        onclick="handleDeleteNurse(event)"
+                                        class="btn btn-danger"
+                                        id="nurseDeleteBtn"
+                                        style="display: none;">
+                                    <i class="fa-solid fa-trash"></i>
+                                    Delete
+                                </button>
+
+                                <!-- Cancel -->
+                                <button type="button"
+                                        onclick="handleCancelNurse()"
+                                        class="btn btn-dark"
+                                        id="nurseCancelBtn"
+                                        style="display: none;">
+                                    <i class="fa-solid fa-xmark"></i>
+                                    Cancel
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </section>
+
+            <!-- ================= NURSE TABLE ================= -->
+            <section class="content-grid single">
+
+                <div class="card">
+
+                    <div class="card-header">
+                        <h2>All Nurses</h2>
+                    </div>
+
+                    <div class="table-container">
+
+                        <table>
+
+                            <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Full Name</th>
+                                <th>Contact Number</th>
+                                <th>Department</th>
+                            </tr>
+                            </thead>
+
+                            <tbody id="nursesTableBody">
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+</div>
+
+<!-- ================= JQUERY ================= -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+<!-- ================= SIDEBAR ================= -->
+<script src="js/sidebar.js"></script>
+
+<!-- ================= SWEETALERT2 ================= -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<!-- ================= TAB SWITCHER ================= -->
+<script>
+    function switchTab(tab) {
+        const isDoctor = tab === 'doctor';
+
+        $('#tabBtnDoctor').toggleClass('active', isDoctor);
+        $('#tabBtnNurse').toggleClass('active', !isDoctor);
+
+        $('#panelDoctor').toggleClass('active', isDoctor);
+        $('#panelNurse').toggleClass('active', !isDoctor);
+    }
+</script>
+
+<!-- ================= DOCTOR & NURSE ================= -->
+<script src="js/custom/doctor-nurse.js"></script>
+
+</body>
+</html>

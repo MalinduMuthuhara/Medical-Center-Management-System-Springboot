@@ -11,31 +11,15 @@ class AppSidebar extends HTMLElement {
             page: "dashboard",
             icon: "fa-house",
             label: "Dashboard",
-            href: "dashboard.html"
+            href: "sidebar.html"
         },
 
-        // Departments
+        // Departments & Wards
         {
             page: "departments",
             icon: "fa-building",
-            label: "Departments",
-            href: "department.html"
-        },
-
-        // Wards
-        {
-            page: "wards",
-            icon: "fa-bed-pulse",
-            label: "Wards",
-            href: "ward.html"
-        },
-
-        // Nurses
-        {
-            page: "nurses",
-            icon: "fa-user-nurse",
-            label: "Nurses",
-            href: "nurse.html"
+            label: "Departments & Wards",
+            href: "department-ward.html"
         },
 
         // Expenses
@@ -46,36 +30,20 @@ class AppSidebar extends HTMLElement {
             href: "expense.html"
         },
 
-        // Medicines
+        // Medicines & Suppliers
         {
             page: "medicines",
             icon: "fa-pills",
-            label: "Medicines",
-            href: "medicine.html"
+            label: "Medicines & Suppliers",
+            href: "medicine-supplier.html"
         },
 
-        // Suppliers
-        {
-            page: "suppliers",
-            icon: "fa-truck-fast",
-            label: "Suppliers",
-            href: "supplier.html"
-        },
-
-        // Medicine Suppliers
-        {
-            page: "medicinesuppliers",
-            icon: "fa-boxes-packing",
-            label: "Medicine Suppliers",
-            href: "medicinesupplier.html"
-        },
-
-        // Doctors
+        // Doctors & Nurses
         {
             page: "doctors",
             icon: "fa-user-doctor",
-            label: "Doctors",
-            href: "doctor.html"
+            label: "Doctors & Nurses",
+            href: "doctor-nurse.html"
         },
 
         // Patients

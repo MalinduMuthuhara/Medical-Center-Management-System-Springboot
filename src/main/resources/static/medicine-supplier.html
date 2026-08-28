@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medicines & Suppliers</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/crud.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        app-sidebar {
+            display: contents;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <!-- ================= SIDEBAR ================= -->
+    <app-sidebar active="medicines"></app-sidebar>
+
+    <!-- ================= MAIN CONTENT ================= -->
+    <main class="main-content">
+
+        <!-- ================= HEADER ================= -->
+        <header class="topbar">
+            <div>
+                <h1>Medicines & Suppliers</h1>
+                <p>View, add, edit, and remove medicines, suppliers, and their links.</p>
+            </div>
+        </header>
+
+        <!-- ================= TABS ================= -->
+        <div class="section-tabs">
+            <button type="button" class="section-tab active" id="tabBtnMedicine" onclick="switchTab('medicine')">
+                <i class="fa-solid fa-pills"></i>
+                Medicines
+            </button>
+            <button type="button" class="section-tab" id="tabBtnSupplier" onclick="switchTab('supplier')">
+                <i class="fa-solid fa-truck-fast"></i>
+                Suppliers
+            </button>
+            <button type="button" class="section-tab" id="tabBtnMedicineSupplier" onclick="switchTab('medicinesupplier')">
+                <i class="fa-solid fa-boxes-packing"></i>
+                Medicine Suppliers
+            </button>
+        </div>
+
+        <!-- ============================================================= -->
+        <!-- ================= MEDICINE TAB PANEL ========================== -->
+        <!-- ============================================================= -->
+        <div class="tab-panel active" id="panelMedicine">
+
+            <!-- ================= MEDICINE FORM ================= -->
+            <section class="content-grid single">
+
+                <div class="card">
+
+                    <div class="card-header">
+                        <h2 id="medicineFormTitle">Add Medicine</h2>
+                    </div>
+
+                    <form id="medicineForm">
+
+                        <!-- Medicine ID -->
+                        <input type="hidden" id="medicineId" value="0">
+
+                        <div class="form-row">
+
+                            <!-- Medicine Name -->
+                            <div class="form-group">
+                                <label for="medicineName">Medicine Name</label>
+                                <input type="text"
+                                       id="medicineName"
+                                       placeholder="Enter medicine name"
+                                       required>
+                            </div>
+
+                            <!-- Expire Date -->
+                            <div class="form-group">
+                                <label for="expireDate">Expire Date</label>
+                                <input type="date"
+                                       id="expireDate"
+                                       required>
+                            </div>
+
+                        </div>
+
+                        <div class="form-row">
+
+                            <!-- Quantity -->
+                            <div class="form-group">
+                                <label for="quantity">Quantity</label>
+                                <input type="number"
+                                       id="quantity"
+                                       placeholder="Enter quantity"
+                                       min="0"
+                                       required>
+                            </div>
+
+                            <!-- Price -->
+                            <div class="form-group">
+                                <label for="price">Price</label>
+                                <input type="number"
+                                       id="price"
+                                       placeholder="Enter price"
+                                       step="0.01"
+                                       min="0"
+                                       required>
+                            </div>
+
+                        </div>
+
+                        <!-- ================= BUTTONS ================= -->
+                        <div class="form-row">
+
+                            <div class="form-actions">
+
+                                <!-- Save -->
+                                <button type="submit"
+                                        onclick="handleSaveMedicine(event)"
+                                        class="btn btn-primary"
+                                        id="medicineSaveBtn">
+                                    <i class="fa-solid fa-floppy-disk"></i>
+                                    Save
+                                </button>
+
+                                <!-- Update -->
+                                <button type="button"
+                                        onclick="handleUpdateMedicine(event)"
+                                        class="btn btn-success"
+                                        id="medicineUpdateBtn"
+                                        style="display: none;">
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                    Update
+                                </button>
+
+                                <!-- Delete -->
+                                <button type="button"
+                                        onclick="handleDeleteMedicine(event)"
+                                        class="btn btn-danger"
+                                        id="medicineDeleteBtn"
+                                        style="display: none;">
+                                    <i class="fa-solid fa-trash"></i>
+                                    Delete
+                                </button>
+
+                                <!-- Cancel -->
+                                <button type="button"
+                                        onclick="handleCancelMedicine()"
+                                        class="btn btn-dark"
+                                        id="medicineCancelBtn"
+                                        style="display: none;">
+                                    <i class="fa-solid fa-xmark"></i>
+                                    Cancel
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </section>
+
+            <!-- ================= MEDICINE TABLE ================= -->
+            <section class="content-grid single">
+
+                <div class="card">
+
+                    <div class="card-header">
+                        <h2>All Medicines</h2>
+                    </div>
+
+                    <div class="table-container">
+
+                        <table>
+
+                            <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Expire Date</th>
+                                <th>Quantity</th>
+                                <th>Price</th>
+                            </tr>
+                            </thead>
+
+                            <tbody id="medicinesTableBody">
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+        <!-- ============================================================= -->
+        <!-- ================= SUPPLIER TAB PANEL ========================== -->
+        <!-- ============================================================= -->
+        <div class="tab-panel" id="panelSupplier">
+
+            <!-- ================= SUPPLIER FORM ================= -->
+            <section class="content-grid single">
+
+                <div class="card">
+
+                    <div class="card-header">
+                        <h2 id="supplierFormTitle">Add Supplier</h2>
+                    </div>
+
+                    <form id="supplierForm">
+
+                        <!-- Supplier ID -->
+                        <input type="hidden" id="supplierId" value="0">
+
+                        <div class="form-row">
+
+                            <!-- Supplier Name -->
+                            <div class="form-group">
+                                <label for="supplierName">Supplier Name</label>
+                                <input type="text"
+                                       id="supplierName"
+                                       placeholder="Enter supplier name"
+                                       required>
+                            </div>
+
+                            <!-- Contact Number -->
+                            <div class="form-group">
+                                <label for="supplierContactNo">Contact Number</label>
+                                <input type="text"
+                                       id="supplierContactNo"
+                                       placeholder="Enter contact number"
+                                       required>
+                            </div>
+
+                        </div>
+
+                        <!-- ================= BUTTONS ================= -->
+                        <div class="form-row">
+
+                            <div class="form-actions">
+
+                                <!-- Save -->
+                                <button type="submit"
+                                        onclick="handleSaveSupplier(event)"
+                                        class="btn btn-primary"
+                                        id="supplierSaveBtn">
+                                    <i class="fa-solid fa-floppy-disk"></i>
+                                    Save
+                                </button>
+
+                                <!-- Update -->
+                                <button type="button"
+                                        onclick="handleUpdateSupplier(event)"
+                                        class="btn btn-success"
+                                        id="supplierUpdateBtn"
+                                        style="display: none;">
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                    Update
+                                </button>
+
+                                <!-- Delete -->
+                                <button type="button"
+                                        onclick="handleDeleteSupplier(event)"
+                                        class="btn btn-danger"
+                                        id="supplierDeleteBtn"
+                                        style="display: none;">
+                                    <i class="fa-solid fa-trash"></i>
+                                    Delete
+                                </button>
+
+                                <!-- Cancel -->
+                                <button type="button"
+                                        onclick="handleCancelSupplier()"
+                                        class="btn btn-dark"
+                                        id="supplierCancelBtn"
+                                        style="display: none;">
+                                    <i class="fa-solid fa-xmark"></i>
+                                    Cancel
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </section>
+
+            <!-- ================= SUPPLIER TABLE ================= -->
+            <section class="content-grid single">
+
+                <div class="card">
+
+                    <div class="card-header">
+                        <h2>All Suppliers</h2>
+                    </div>
+
+                    <div class="table-container">
+
+                        <table>
+
+                            <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Supplier Name</th>
+                                <th>Contact Number</th>
+                            </tr>
+                            </thead>
+
+                            <tbody id="suppliersTableBody">
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+        <!-- ============================================================= -->
+        <!-- ============== MEDICINE SUPPLIER TAB PANEL ==================== -->
+        <!-- ============================================================= -->
+        <div class="tab-panel" id="panelMedicineSupplier">
+
+            <!-- ================= MEDICINE SUPPLIER FORM ================= -->
+            <section class="content-grid single">
+
+                <div class="card">
+
+                    <div class="card-header">
+                        <h2 id="medicineSupplierFormTitle">Add Medicine Supplier</h2>
+                    </div>
+
+                    <form id="medicineSupplierForm">
+
+                        <!-- Medicine Supplier ID -->
+                        <input type="hidden" id="medicineSupplierId" value="0">
+
+                        <div class="form-row">
+
+                            <!-- Medicine -->
+                            <div class="form-group">
+                                <label for="msMedicineId">Medicine</label>
+                                <select id="msMedicineId" required>
+                                    <option value="">Select Medicine</option>
+                                </select>
+                            </div>
+
+                            <!-- Supplier -->
+                            <div class="form-group">
+                                <label for="msSupplierId">Supplier</label>
+                                <select id="msSupplierId" required>
+                                    <option value="">Select Supplier</option>
+                                </select>
+                            </div>
+
+                        </div>
+
+                        <!-- ================= BUTTONS ================= -->
+                        <div class="form-row">
+
+                            <div class="form-actions">
+
+                                <!-- Save -->
+                                <button type="submit"
+                                        onclick="handleSaveMedicineSupplier(event)"
+                                        class="btn btn-primary"
+                                        id="medicineSupplierSaveBtn">
+                                    <i class="fa-solid fa-floppy-disk"></i>
+                                    Save
+                                </button>
+
+                                <!-- Delete -->
+                                <button type="button"
+                                        onclick="handleDeleteMedicineSupplier(event)"
+                                        class="btn btn-danger"
+                                        id="medicineSupplierDeleteBtn"
+                                        style="display: none;">
+                                    <i class="fa-solid fa-trash"></i>
+                                    Delete
+                                </button>
+
+                                <!-- Cancel -->
+                                <button type="button"
+                                        onclick="handleCancelMedicineSupplier()"
+                                        class="btn btn-dark"
+                                        id="medicineSupplierCancelBtn"
+                                        style="display: none;">
+                                    <i class="fa-solid fa-xmark"></i>
+                                    Cancel
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </section>
+
+            <!-- ================= MEDICINE SUPPLIER TABLE ================= -->
+            <section class="content-grid single">
+
+                <div class="card">
+
+                    <div class="card-header">
+                        <h2>All Medicine Suppliers</h2>
+                    </div>
+
+                    <div class="table-container">
+
+                        <table>
+
+                            <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Medicine</th>
+                                <th>Supplier</th>
+                            </tr>
+                            </thead>
+
+                            <tbody id="medicineSupplierTableBody">
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+</div>
+
+<!-- ================= JQUERY ================= -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+<!-- ================= SIDEBAR ================= -->
+<script src="js/sidebar.js"></script>
+
+<!-- ================= SWEETALERT2 ================= -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<!-- ================= TAB SWITCHER ================= -->
+<script>
+    function switchTab(tab) {
+
+        $('#tabBtnMedicine').toggleClass('active', tab === 'medicine');
+        $('#tabBtnSupplier').toggleClass('active', tab === 'supplier');
+        $('#tabBtnMedicineSupplier').toggleClass('active', tab === 'medicinesupplier');
+
+        $('#panelMedicine').toggleClass('active', tab === 'medicine');
+        $('#panelSupplier').toggleClass('active', tab === 'supplier');
+        $('#panelMedicineSupplier').toggleClass('active', tab === 'medicinesupplier');
+    }
+</script>
+
+<!-- ================= MEDICINE / SUPPLIER / MEDICINE SUPPLIER ================= -->
+<script src="js/custom/medicine-supplier.js"></script>
+
+</body>
+</html>

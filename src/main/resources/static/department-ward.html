@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Departments & Wards</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/crud.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        app-sidebar {
+            display: contents;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <!-- ================= SIDEBAR ================= -->
+    <app-sidebar active="departments"></app-sidebar>
+
+    <!-- ================= MAIN CONTENT ================= -->
+    <main class="main-content">
+
+        <!-- ================= HEADER ================= -->
+        <header class="topbar">
+            <div>
+                <h1>Departments & Wards</h1>
+                <p>View, add, edit, and remove departments and wards.</p>
+            </div>
+        </header>
+
+        <!-- ================= TABS ================= -->
+        <div class="section-tabs">
+            <button type="button" class="section-tab active" id="tabBtnDepartment" onclick="switchTab('department')">
+                <i class="fa-solid fa-building"></i>
+                Departments
+            </button>
+            <button type="button" class="section-tab" id="tabBtnWard" onclick="switchTab('ward')">
+                <i class="fa-solid fa-bed-pulse"></i>
+                Wards
+            </button>
+        </div>
+
+        <!-- ============================================================= -->
+        <!-- ================= DEPARTMENT TAB PANEL ======================= -->
+        <!-- ============================================================= -->
+        <div class="tab-panel active" id="panelDepartment">
+
+            <!-- ================= DEPARTMENT FORM ================= -->
+            <section class="content-grid single">
+
+                <div class="card">
+
+                    <div class="card-header">
+                        <h2 id="departmentFormTitle">Add Department</h2>
+                    </div>
+
+                    <form id="departmentForm">
+
+                        <!-- Department ID -->
+                        <input type="hidden" id="departmentId" value="0">
+
+                        <div class="form-row">
+
+                            <!-- Department Name -->
+                            <div class="form-group">
+                                <label for="departmentName">Department Name</label>
+                                <input type="text"
+                                       id="departmentName"
+                                       placeholder="Enter department name"
+                                       required>
+                            </div>
+
+                            <!-- Department Location -->
+                            <div class="form-group">
+                                <label for="departmentLocation">Location</label>
+                                <input type="text"
+                                       id="departmentLocation"
+                                       placeholder="Enter department location"
+                                       required>
+                            </div>
+
+                        </div>
+
+                        <!-- ================= BUTTONS ================= -->
+                        <div class="form-row">
+
+                            <div class="form-actions">
+
+                                <!-- Save -->
+                                <button type="submit"
+                                        onclick="handleSaveDepartment(event)"
+                                        class="btn btn-primary"
+                                        id="departmentSaveBtn">
+                                    <i class="fa-solid fa-floppy-disk"></i>
+                                    Save
+                                </button>
+
+                                <!-- Update -->
+                                <button type="button"
+                                        onclick="handleUpdateDepartment(event)"
+                                        class="btn btn-success"
+                                        id="departmentUpdateBtn"
+                                        style="display: none;">
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                    Update
+                                </button>
+
+                                <!-- Delete -->
+                                <button type="button"
+                                        onclick="handleDeleteDepartment(event)"
+                                        class="btn btn-danger"
+                                        id="departmentDeleteBtn"
+                                        style="display: none;">
+                                    <i class="fa-solid fa-trash"></i>
+                                    Delete
+                                </button>
+
+                                <!-- Cancel -->
+                                <button type="button"
+                                        onclick="handleCancelDepartment()"
+                                        class="btn btn-dark"
+                                        id="departmentCancelBtn"
+                                        style="display: none;">
+                                    <i class="fa-solid fa-xmark"></i>
+                                    Cancel
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </section>
+
+            <!-- ================= DEPARTMENT TABLE ================= -->
+            <section class="content-grid single">
+
+                <div class="card">
+
+                    <div class="card-header">
+                        <h2>All Departments</h2>
+                    </div>
+
+                    <div class="table-container">
+
+                        <table>
+
+                            <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Department Name</th>
+                                <th>Location</th>
+                            </tr>
+                            </thead>
+
+                            <tbody id="departmentsTableBody">
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+        <!-- ============================================================= -->
+        <!-- ==================== WARD TAB PANEL =========================== -->
+        <!-- ============================================================= -->
+        <div class="tab-panel" id="panelWard">
+
+            <!-- ================= WARD FORM ================= -->
+            <section class="content-grid single">
+
+                <div class="card">
+
+                    <div class="card-header">
+                        <h2 id="wardFormTitle">Add Ward</h2>
+                    </div>
+
+                    <form id="wardForm">
+
+                        <!-- Ward ID -->
+                        <input type="hidden" id="wardId" value="0">
+
+                        <div class="form-row">
+
+                            <!-- Room Number -->
+                            <div class="form-group">
+                                <label for="roomNumber">Room Number</label>
+                                <input type="text"
+                                       id="roomNumber"
+                                       placeholder="Enter room number"
+                                       required>
+                            </div>
+
+                            <!-- Type -->
+                            <div class="form-group">
+                                <label for="wardType">Ward Type</label>
+                                <input type="text"
+                                       id="wardType"
+                                       placeholder="Enter ward type"
+                                       required>
+                            </div>
+
+                        </div>
+
+                        <div class="form-row">
+
+                            <!-- Capacity -->
+                            <div class="form-group">
+                                <label for="capacity">Capacity</label>
+                                <input type="number"
+                                       id="capacity"
+                                       placeholder="Enter ward capacity"
+                                       min="1"
+                                       required>
+                            </div>
+
+                            <!-- Department -->
+                            <div class="form-group">
+                                <label for="wardDepartmentId">Department</label>
+                                <select id="wardDepartmentId" required>
+                                    <option value="">Select Department</option>
+                                </select>
+                            </div>
+
+                        </div>
+
+                        <!-- ================= BUTTONS ================= -->
+                        <div class="form-row">
+
+                            <div class="form-actions">
+
+                                <!-- Save -->
+                                <button type="submit"
+                                        onclick="handleSaveWard(event)"
+                                        class="btn btn-primary"
+                                        id="wardSaveBtn">
+                                    <i class="fa-solid fa-floppy-disk"></i>
+                                    Save
+                                </button>
+
+                                <!-- Update -->
+                                <button type="button"
+                                        onclick="handleUpdateWard(event)"
+                                        class="btn btn-success"
+                                        id="wardUpdateBtn"
+                                        style="display: none;">
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                    Update
+                                </button>
+
+                                <!-- Delete -->
+                                <button type="button"
+                                        onclick="handleDeleteWard(event)"
+                                        class="btn btn-danger"
+                                        id="wardDeleteBtn"
+                                        style="display: none;">
+                                    <i class="fa-solid fa-trash"></i>
+                                    Delete
+                                </button>
+
+                                <!-- Cancel -->
+                                <button type="button"
+                                        onclick="handleCancelWard()"
+                                        class="btn btn-dark"
+                                        id="wardCancelBtn"
+                                        style="display: none;">
+                                    <i class="fa-solid fa-xmark"></i>
+                                    Cancel
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </section>
+
+            <!-- ================= WARD TABLE ================= -->
+            <section class="content-grid single">
+
+                <div class="card">
+
+                    <div class="card-header">
+                        <h2>All Wards</h2>
+                    </div>
+
+                    <div class="table-container">
+
+                        <table>
+
+                            <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Room Number</th>
+                                <th>Type</th>
+                                <th>Capacity</th>
+                                <th>Department</th>
+                            </tr>
+                            </thead>
+
+                            <tbody id="wardsTableBody">
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+</div>
+
+<!-- ================= JQUERY ================= -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+<!-- ================= SIDEBAR ================= -->
+<script src="js/sidebar.js"></script>
+
+<!-- ================= SWEETALERT2 ================= -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<!-- ================= TAB SWITCHER ================= -->
+<script>
+    function switchTab(tab) {
+        const isDepartment = tab === 'department';
+
+        $('#tabBtnDepartment').toggleClass('active', isDepartment);
+        $('#tabBtnWard').toggleClass('active', !isDepartment);
+
+        $('#panelDepartment').toggleClass('active', isDepartment);
+        $('#panelWard').toggleClass('active', !isDepartment);
+    }
+</script>
+
+<!-- ================= DEPARTMENT & WARD ================= -->
+<script src="js/custom/department-ward.js"></script>
+
+</body>
+</html>
