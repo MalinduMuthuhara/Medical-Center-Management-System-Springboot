@@ -6,10 +6,13 @@ import java.util.List;
 
 public interface PaymentService {
 
-    void savePayment(PaymentDTO paymentDTO) throws Exception ;
-    void updatePayment(PaymentDTO paymentDTO )throws Exception ;
-    void deletePayment(Integer paymentId) throws Exception ;
-    PaymentDTO findPaymentById(Integer paymentId) throws Exception ;
-    List<PaymentDTO>getAllPayments() throws Exception ;
+    void savePayment(PaymentDTO paymentDTO) throws Exception;
+    void updatePayment(PaymentDTO paymentDTO) throws Exception;
+    void deletePayment(Integer paymentId) throws Exception;
+    PaymentDTO findPaymentById(Integer paymentId) throws Exception;
+    List<PaymentDTO> getAllPayments() throws Exception;
+
+    // Amount = 2500 (base fee) + Σ(AppointmentMedicine.quantity * Medicine.price)
+    double calculateAmount(Integer appointmentId) throws Exception;
 
 }

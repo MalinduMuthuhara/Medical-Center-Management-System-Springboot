@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payments</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/crud.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        app-sidebar {
+            display: contents;
+        }
+
+        #amount {
+            background: #f4f5f9;
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <!-- ================= SIDEBAR ================= -->
+    <app-sidebar active="payments"></app-sidebar>
+
+    <!-- ================= MAIN CONTENT ================= -->
+    <main class="main-content">
+
+        <!-- ================= HEADER ================= -->
+        <header class="topbar">
+            <div>
+                <h1>Payments</h1>
+                <p>Appointment fee = Rs. 2500 base charge + medicine costs.</p>
+            </div>
+        </header>
+
+        <!-- ================= PAYMENT FORM ================= -->
+        <section class="content-grid single">
+
+            <div class="card">
+
+                <div class="card-header">
+                    <h2 id="formTitle">Add Payment</h2>
+                </div>
+
+                <form id="paymentForm">
+
+                    <!-- Payment ID -->
+                    <input type="hidden" id="paymentId" value="0">
+
+                    <div class="form-row">
+
+                        <!-- Appointment -->
+                        <div class="form-group">
+                            <label for="appointmentId">Appointment</label>
+                            <select id="appointmentId" required>
+                                <option value="">Select Appointment</option>
+                            </select>
+                        </div>
+
+                        <!-- Amount (auto-calculated, read-only) -->
+                        <div class="form-group">
+                            <label for="amount">Amount (Auto-Calculated)</label>
+                            <input type="text"
+                                   id="amount"
+                                   placeholder="Select an appointment"
+                                   readonly>
+                        </div>
+
+                    </div>
+
+                    <!-- ================= BUTTONS ================= -->
+                    <div class="form-row">
+
+                        <div class="form-actions">
+
+                            <!-- Save -->
+                            <button type="submit"
+                                    onclick="handleSave(event)"
+                                    class="btn btn-primary"
+                                    id="saveBtn">
+                                <i class="fa-solid fa-floppy-disk"></i>
+                                Save
+                            </button>
+
+                            <!-- Update -->
+                            <button type="button"
+                                    onclick="handleUpdate(event)"
+                                    class="btn btn-success"
+                                    id="updateBtn"
+                                    style="display: none;">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                                Update
+                            </button>
+
+                            <!-- Delete -->
+                            <button type="button"
+                                    onclick="handleDelete(event)"
+                                    class="btn btn-danger"
+                                    id="deleteBtn"
+                                    style="display: none;">
+                                <i class="fa-solid fa-trash"></i>
+                                Delete
+                            </button>
+
+                            <!-- Cancel -->
+                            <button type="button"
+                                    onclick="handleCancel()"
+                                    class="btn btn-dark"
+                                    id="cancelBtn"
+                                    style="display: none;">
+                                <i class="fa-solid fa-xmark"></i>
+                                Cancel
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </section>
+
+        <!-- ================= PAYMENT TABLE ================= -->
+        <section class="content-grid single">
+
+            <div class="card">
+
+                <div class="card-header">
+                    <h2>All Payments</h2>
+                </div>
+
+                <div class="table-container">
+
+                    <table>
+
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Appointment</th>
+                            <th>Amount</th>
+                        </tr>
+                        </thead>
+
+                        <tbody id="paymentTableBody">
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+<!-- ================= JQUERY ================= -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+<!-- ================= SIDEBAR ================= -->
+<script src="js/sidebar.js"></script>
+
+<!-- ================= SWEETALERT2 ================= -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<!-- ================= PAYMENT ================= -->
+<script src="js/custom/payment.js"></script>
+
+</body>
+</html>

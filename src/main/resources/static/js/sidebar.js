@@ -70,6 +70,14 @@ class AppSidebar extends HTMLElement {
             href: "appointmentmedicine.html"
         },
 
+        // Payments
+        {
+            page: "payments",
+            icon: "fa-money-check-dollar",
+            label: "Payments",
+            href: "payment.html"
+        },
+
         // Medical History
         {
             page: "medicalhistory",
