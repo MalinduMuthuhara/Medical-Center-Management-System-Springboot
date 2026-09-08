@@ -426,3 +426,76 @@ table a {
 .tab-panel.active {
     display: block;
 }
+/* =========================================================
+   DARK THEME (activated via <html data-theme="dark">)
+========================================================= */
+
+[data-theme="dark"] body {
+    background: #0F172A;
+    color: #E2E8F0;
+}
+
+[data-theme="dark"] .topbar p {
+    color: #94A3B8;
+}
+
+[data-theme="dark"] .card {
+    background: #1E293B;
+    border-color: #334155;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .card-header {
+    border-bottom-color: #334155;
+}
+
+[data-theme="dark"] .form-group label {
+    color: #CBD5E1;
+}
+
+[data-theme="dark"] .form-group input,
+[data-theme="dark"] .form-group select,
+[data-theme="dark"] .form-group textarea {
+    background: #0F172A;
+    border-color: #334155;
+    color: #E2E8F0;
+}
+
+[data-theme="dark"] .form-group input::placeholder,
+[data-theme="dark"] .form-group textarea::placeholder {
+    color: #64748B;
+}
+
+[data-theme="dark"] .form-group input:focus,
+[data-theme="dark"] .form-group select:focus,
+[data-theme="dark"] .form-group textarea:focus {
+    border-color: #60A5FA;
+    box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.15);
+}
+
+[data-theme="dark"] table thead {
+    background: #111827;
+}
+
+[data-theme="dark"] table th {
+    color: #94A3B8;
+    border-bottom-color: #334155;
+}
+
+[data-theme="dark"] table td {
+    color: #CBD5E1;
+    border-bottom-color: #263145;
+}
+
+[data-theme="dark"] table tbody tr:hover {
+    background: #26344B;
+}
+
+[data-theme="dark"] #productsTableBody:empty::after,
+[data-theme="dark"] #customersTableBody:empty::after {
+    color: #64748B;
+}
+
+[data-theme="dark"] .section-tabs {
+    border-bottom-color: #334155;
+}

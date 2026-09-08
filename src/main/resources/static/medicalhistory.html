@@ -7,6 +7,7 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="css/dashboard.css">
+    <script src="js/theme.js"></script>
     <link rel="stylesheet" href="css/crud.css">
 
     <!-- Font Awesome -->
@@ -34,6 +35,17 @@
         .form-group textarea:focus {
             border-color: #4f46e5;
             box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+        }
+
+        [data-theme="dark"] .form-group textarea {
+            background: #0F172A;
+            border-color: #334155;
+            color: #E2E8F0;
+        }
+
+        [data-theme="dark"] .form-group textarea:focus {
+            border-color: #60A5FA;
+            box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.15);
         }
     </style>
 </head>
